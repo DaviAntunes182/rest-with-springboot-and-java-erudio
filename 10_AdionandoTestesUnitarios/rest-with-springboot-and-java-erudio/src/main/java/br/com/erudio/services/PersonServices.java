@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.erudio.data.vo.v1.PersonVO;
-import br.com.erudio.data.vo.v2.PersonVOV2;
 import br.com.erudio.exceptions.ResourceNotFoundException;
 import br.com.erudio.mapper.PersonMapper;
 import br.com.erudio.models.PersonModel;
@@ -53,16 +52,6 @@ public class PersonServices {
 		var personEntity  = mapper.personVOToPersonModel(person);
 		
 		var personVO = mapper.personModelToPersonVO(repository.save(personEntity));
-		
-		return personVO;
-	}
-
-	public PersonVOV2 createV2(PersonVOV2 person) {
-		logger.info("Creating person... version 2");
-		
-		var personEntity  = mapper.personVOV2ToPersonModel(person);
-		
-		var personVO = mapper.personModelToPersonVOV2(repository.save(personEntity));
 		
 		return personVO;
 	}
